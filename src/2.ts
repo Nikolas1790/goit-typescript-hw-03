@@ -25,7 +25,6 @@ class Employee {
     this.department = department;
     this.salary = salary;
   }
-
   getEmployeeDetails() {
     return `Name: ${this.name}, Department: ${this.department}, Salary: ${this.salary}`;
   }
@@ -37,10 +36,6 @@ class Manager extends Employee {
   }
 }
 
-
 export {};
 
-
-// const emploee = new Employee('Ann', 'aaaa', 1);
-// console.log(emploee.getEmployeeDetails());
 

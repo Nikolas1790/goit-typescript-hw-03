@@ -18,7 +18,55 @@
 // Після реалізації всіх класів створіть об'єкти для кожного класу та спробуйте відтворити сценарій, в якому людина приходить додому.
 
 // Наприклад, ось так:
+abstract class House{
+    public door = false;
+    public key:object = {};
+    tenants:number[] = [];
 
+    // constructor(door:boolean, key:object = {}){}
+    comeIn(){
+this.door = true
+    }
+    public abstract OpenDoor():boolean
+    // public origKey:number;
+
+    // openDoor(key:number):void{
+    //     if(key === origKey){
+    //         console.log('Open the dor')
+    //     }
+
+    // }
+}
+// class MyHouse extends House{
+//     constructor(private key:number):void{
+//         super()
+//     }
+//     // comeIn(person:number):void{
+//     //     console.log('welcome!')
+//     // }
+//     openDoor(getKey:string):void{
+//         if(key === getKey){
+//             console.log('Open the dor')
+//         }
+// }
+class Person {
+    private key:object = {};
+    constructor({key:number}){}
+    getKey(this: Person){
+        this.key = key
+    }
+}
+
+class Key {
+    private signature:number;
+    // constructor(){
+    // }
+
+    getSignature(this:Key){
+
+        this.signature = Date.now()
+    }
+}
 const key = new Key();
 
 const house = new MyHouse(key);
