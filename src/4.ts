@@ -18,6 +18,28 @@
 // Після реалізації всіх класів створіть об'єкти для кожного класу та спробуйте відтворити сценарій, в якому людина приходить додому.
 
 // Наприклад, ось так:
+
+class Key {
+    private signature:number;
+    constructor(){
+        this.signature = Date.now() 
+    }
+    getSignature(this:Key):number{
+      return  this.signature 
+    }
+}
+
+class Person {
+    private key:Key;
+    constructor(key:Key){
+        this.key = key
+    }
+    getKey():Key{
+       return this.key;
+    }
+}
+
+
 abstract class House{
     public door = false;
     public key:object = {};
@@ -49,24 +71,26 @@ this.door = true
 //             console.log('Open the dor')
 //         }
 // }
-class Person {
-    private key:object = {};
-    constructor({key:number}){}
-    getKey(this: Person){
-        this.key = key
-    }
-}
+// class Person {
+//     private key:object = {};
+//     constructor({key:number}){
+//         // this.key = this.getKey()
+//     }
+//     getKey(key){
+//         this.key = key
+//     }
+// }
 
-class Key {
-    private signature:number;
-    // constructor(){
-    // }
+// class Key {
+//     private signature:number;
+//     // constructor(){
+//     // }
 
-    getSignature(this:Key){
+//     getSignature(this:Key){
 
-        this.signature = Date.now()
-    }
-}
+//         this.signature = Date.now()
+//     }
+// }
 const key = new Key();
 
 const house = new MyHouse(key);
