@@ -24,8 +24,8 @@ class Key {
     constructor(){
         this.signature = Date.now() 
     }
-    getSignature(this:Key):number{
-      return  this.signature 
+    getSignature():number{
+        return  this.signature 
     }
 }
 
@@ -39,58 +39,34 @@ class Person {
     }
 }
 
-
 abstract class House{
-    public door = false;
-    public key:object = {};
-    tenants:number[] = [];
+    protected door:boolean;
+    protected key:Key;
+    private tenants:Person[] = [];
 
-    // constructor(door:boolean, key:object = {}){}
-    comeIn(){
-this.door = true
+    constructor( key:Key){
+        this.key = key;    
     }
-    public abstract OpenDoor():boolean
-    // public origKey:number;
+    comeIn(person:Person):void{
+        if(this.door){
+            this.tenants.push(person)        
+        }
+    }
 
-    // openDoor(key:number):void{
-    //     if(key === origKey){
-    //         console.log('Open the dor')
-    //     }
+    protected abstract openDoor(key:Key):void
 
-    // }
 }
-// class MyHouse extends House{
-//     constructor(private key:number):void{
-//         super()
-//     }
-//     // comeIn(person:number):void{
-//     //     console.log('welcome!')
-//     // }
-//     openDoor(getKey:string):void{
-//         if(key === getKey){
-//             console.log('Open the dor')
-//         }
-// }
-// class Person {
-//     private key:object = {};
-//     constructor({key:number}){
-//         // this.key = this.getKey()
-//     }
-//     getKey(key){
-//         this.key = key
-//     }
-// }
+class MyHouse extends House{
+    openDoor(key:Key):void{
+        if(key.getSignature() === this.key.getSignature()){
+            this.door = true
+            console.log('Open the dor)')
+        }
+        console.log('Sorry, the door is closed(')
+}
+}
 
-// class Key {
-//     private signature:number;
-//     // constructor(){
-//     // }
 
-//     getSignature(this:Key){
-
-//         this.signature = Date.now()
-//     }
-// }
 const key = new Key();
 
 const house = new MyHouse(key);
